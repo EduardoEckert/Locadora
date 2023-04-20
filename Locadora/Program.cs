@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ControleEmprestimoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Add DependencyInjection
 DependencyInjection.AddDependencyInjection(builder.Services);
@@ -27,7 +27,7 @@ if (app.Environment.IsDevelopment())
     using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
     var context = serviceScope
         .ServiceProvider
-        .GetRequiredService<MyContext>();
+        .GetRequiredService<ControleEmprestimoContext>();
 
     if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
     {

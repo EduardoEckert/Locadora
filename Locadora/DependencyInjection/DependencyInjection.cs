@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.RepositoryInterfaces;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 
 namespace Locadora.DependencyInjection
@@ -14,7 +15,12 @@ namespace Locadora.DependencyInjection
 
         private static void AddContextDependecyInjection(IServiceCollection services)
         {
-            services.AddScoped<DbContext, MyContext>();
+            services.AddScoped<DbContext, ControleEmprestimoContext>();
+        }
+
+        private static void AddRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
         }
     }
 }

@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Context
 {
-    public class MyContext : DbContext
+    public class ControleEmprestimoContext : DbContext
     {
-        public MyContext(DbContextOptions<MyContext> options) : base(options)
+        public ControleEmprestimoContext(DbContextOptions<ControleEmprestimoContext> options) : base(options)
         {
         }
+
         public DbSet<Pessoa> Pessoa { get; set; }
     }
 }
