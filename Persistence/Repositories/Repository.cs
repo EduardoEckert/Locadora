@@ -7,22 +7,14 @@ namespace Persistence.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : Entity
     {
-        protected Repository(ControleEmprestimoContext context)
+        protected Repository(LocadoraContext context)
         {
             Context = context;
             Set = context.Set<T>();
         }
 
-        protected ControleEmprestimoContext Context { get; }
+        protected LocadoraContext Context { get; }
         protected DbSet<T> Set { get; }
-
-        public void Delete(int id)
-        {
-            var entity = Set.Find(id);
-
-            if (entity != null)
-                Set.Remove(entity);
-        }
 
         public IEnumerable<T> GetAll()
         {
@@ -34,16 +26,25 @@ namespace Persistence.Repositories
             return Set.Find(id);
         }
 
-        public T Insert(T entity)
+        public void Insert(T entity)
         {
             Set.Add(entity);
-
-            return entity;
+            Context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             Set.Update(entity);
+            Context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var entity = Set.Find(id);
+
+            if (entity != null)
+                Set.Remove(entity);
+            Context.SaveChanges();
         }
     }
 }

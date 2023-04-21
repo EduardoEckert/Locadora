@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ControleEmprestimoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<LocadoraContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Add DependencyInjection
 DependencyInjection.AddDependencyInjection(builder.Services);
@@ -15,7 +15,7 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
+    app.UseDeveloperExceptionPage();
     app.UseHsts();
 }
 
@@ -27,7 +27,7 @@ if (app.Environment.IsDevelopment())
     using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
     var context = serviceScope
         .ServiceProvider
-        .GetRequiredService<ControleEmprestimoContext>();
+        .GetRequiredService<LocadoraContext>();
 
     if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
     {
@@ -39,7 +39,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
-//app.UseAuthentication();
-//app.UseAuthorization();
 app.MapControllers();
 app.Run();

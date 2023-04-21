@@ -6,7 +6,7 @@ namespace Persistence.Repositories
 {
     public class PessoaRepository : Repository<Pessoa>, IPessoaRepository
     {
-        public PessoaRepository(ControleEmprestimoContext context) : base(context)
+        public PessoaRepository(LocadoraContext context) : base(context)
         {
         }
     }
