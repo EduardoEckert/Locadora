@@ -15,12 +15,30 @@ namespace Locadora.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                var result = _pessoaService.GetAll().Select(x => (PessoaModel?)x);
+                return Ok(result);
+            }
+            catch (InvalidOperationException)
+            {
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetById(int id)
         {
             try
             {
-                var result = _pessoaService.GetById(id);
+                PessoaModel? result = _pessoaService.GetById(id);
                 if (result is null)
                 {
                     return NotFound();
@@ -38,11 +56,10 @@ namespace Locadora.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostInsert([FromBody] InsertPessoaModel model)
+        public IActionResult PostInsert([FromForm] InsertPessoaModel model)
         {
             try
             {
-
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
@@ -54,6 +71,45 @@ namespace Locadora.Controllers
             catch (InvalidOperationException)
             {
                 return BadRequest();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromForm] UpdatePessoaModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _pessoaService.Update(model);
+                return Ok();
+            }
+            catch (InvalidOperationException)
+            {
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IActionResult DeleteById(int id)
+        {
+            try
+            {
+                _pessoaService.Delete(id);
+
+                return Ok();
             }
             catch (Exception)
             {
