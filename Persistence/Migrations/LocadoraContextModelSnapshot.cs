@@ -22,6 +22,38 @@ namespace Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.Amigo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PessoaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TelefoneId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId");
+
+                    b.HasIndex("PessoaId");
+
+                    b.HasIndex("TelefoneId");
+
+                    b.ToTable("Amigos", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Dvd", b =>
                 {
                     b.Property<int>("Id")
@@ -162,8 +194,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pessoas", (string)null);
-
-                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Domain.Entities.Telefone", b =>
@@ -189,23 +219,29 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Amigo", b =>
                 {
-                    b.HasBaseType("Domain.Entities.Pessoa");
+                    b.HasOne("Domain.Entities.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasOne("Domain.Entities.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                    b.HasOne("Domain.Entities.Telefone", "Telefone")
+                        .WithMany()
+                        .HasForeignKey("TelefoneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("TelefoneId")
-                        .HasColumnType("int");
+                    b.Navigation("Endereco");
 
-                    b.HasIndex("EnderecoId");
+                    b.Navigation("Pessoa");
 
-                    b.HasIndex("TelefoneId");
-
-                    b.ToTable("Amigos", (string)null);
+                    b.Navigation("Telefone");
                 });
 
             modelBuilder.Entity("Domain.Entities.Dvd", b =>
@@ -252,31 +288,6 @@ namespace Persistence.Migrations
                     b.Navigation("Amigo");
 
                     b.Navigation("Dvd");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Amigo", b =>
-                {
-                    b.HasOne("Domain.Entities.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Pessoa", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.Entities.Amigo", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Telefone", "Telefone")
-                        .WithMany()
-                        .HasForeignKey("TelefoneId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
-
-                    b.Navigation("Telefone");
                 });
 
             modelBuilder.Entity("Domain.Entities.Amigo", b =>

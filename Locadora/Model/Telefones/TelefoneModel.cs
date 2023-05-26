@@ -17,7 +17,7 @@ namespace Locadora.Model.Telefones
             return new TelefoneModel
             {
                 Id = dto.Id,
-                Ddd = dto.Ddd
+                Ddd = dto.Ddd,
                 Numero = dto.Numero,
             };
         }

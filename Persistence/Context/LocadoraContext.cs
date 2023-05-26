@@ -32,7 +32,6 @@ namespace Persistence.Context
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Amigo>()
-                .HasBaseType<Pessoa>()
                 .ToTable("Amigos");
 
             modelBuilder.Entity<Pessoa>()

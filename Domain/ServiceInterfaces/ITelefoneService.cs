@@ -1,11 +1,12 @@
-﻿using Domain.Dtos.Telefone;
+﻿using Domain.Dtos.Enderecos;
+using Domain.Dtos.Telefones;
 
 namespace Domain.ServiceInterfaces
 {
     public interface ITelefoneService
     {
         IEnumerable<TelefoneDto> GetAll();
-        EnderecoDto GetById(int id);
+        TelefoneDto GetById(int id);
         void Insert(InsertTelefoneDto dto);
         void Update(UpdateTelefoneDto dto);
         void Delete(int id);

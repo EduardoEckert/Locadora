@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Locadora.Controllers
 {
-    [Route("endereco")]
+    [Route("api/endereco")]
     public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoService _enderecoService;

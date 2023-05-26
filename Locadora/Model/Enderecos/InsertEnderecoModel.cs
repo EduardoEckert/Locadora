@@ -19,8 +19,6 @@ namespace Locadora.Model.Enderecos
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bairro é um campo obrigatório")]
         public string Bairro { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Complemento é um campo obrigatório")]
         public string Complemento { get; set; }
 
         public static implicit operator InsertEnderecoDto(InsertEnderecoModel model)

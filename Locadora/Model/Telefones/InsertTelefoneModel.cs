@@ -1,7 +1,7 @@
-﻿using Domain.Dtos.Telefone;
+﻿using Domain.Dtos.Telefones;
 using System.ComponentModel.DataAnnotations;
 
-namespace Locadora.Model.Telefone
+namespace Locadora.Model.Telefones
 {
     public class InsertTelefoneModel
     {
@@ -15,7 +15,7 @@ namespace Locadora.Model.Telefone
         {
             return new InsertTelefoneDto
             {
-                Ddd = model.Ddd;
+                Ddd = model.Ddd,
                 Numero = model.Numero,
             };
         }

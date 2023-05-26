@@ -19,12 +19,14 @@ namespace Locadora.DependencyInjection
         {
             services.AddScoped<IPessoaService, PessoaService>();
             services.AddScoped<IEnderecoService, EnderecoService>();
+            //services.AddScoped<ITelefoneService, TelefoneService>();
         }
 
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            //services.AddScoped<ITelefoneRepository, TelefoneRepository>();
         }
     }
 }

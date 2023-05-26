@@ -1,9 +1,9 @@
 ﻿using Domain.Dtos.Telefones;
 using System.ComponentModel.DataAnnotations;
 
-namespace Locadora.Model.Telefone
+namespace Locadora.Model.Telefones
 {
-    public class UpdateTelefonecoModel
+    public class UpdateTelefoneModel
     {
         [Required(ErrorMessage = "Id obrigatório")]
         public int Id { get; set; }

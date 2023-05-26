@@ -1,7 +1,7 @@
-﻿using Domain.Dtos;
+﻿using Domain.Dtos.Pessoas;
 using System.ComponentModel.DataAnnotations;
 
-namespace Locadora.Model
+namespace Locadora.Model.Pessoa
 {
     public class InsertPessoaModel
     {
