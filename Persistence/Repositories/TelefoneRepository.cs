@@ -4,9 +4,9 @@ using Persistence.Context;
 
 namespace Persistence.Repositories
 {
-    public class   EnderecoRepository : Repository<Endereco>, IEnderecoRepository
+    public class TelefoneRepository : Repository<Telefone>, ITelefoneRepository
     {
-        public EnderecoRepository(LocadoraContext context) : base(context)
+        public TelefoneRepository(LocadoraContext context) : base(context)
         {
         }
     }

@@ -10,6 +10,7 @@ builder.Services.AddDbContext<LocadoraContext>(options => options.UseSqlServer(b
 
 //Add DependencyInjection
 DependencyInjection.AddDependencyInjection(builder.Services);
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 
