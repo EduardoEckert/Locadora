@@ -24,5 +24,7 @@ namespace Locadora.DependencyInjection
         {
             services.AddScoped<IPessoaRepository, PessoaRepository>();
         }
+
+
     }
 }
