@@ -1,17 +1,17 @@
 ﻿using Domain.ServiceInterfaces;
-using Locadora.Model.Pessoa;
+using Locadora.Model.Telefones;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Locadora.Controllers
 {
-    [Route("api/pessoa")]
-    public class PessoaController : ControllerBase
+    [Route("api/telefone")]
+    public class TelefoneController : ControllerBase
     {
-        private readonly IPessoaService _pessoaService;
+        private readonly ITelefoneService _telefoneService;
 
-        public PessoaController(IPessoaService pessoaService)
+        public TelefoneController(ITelefoneService TelefoneService)
         {
-            _pessoaService = pessoaService;
+            _telefoneService = TelefoneService;
         }
 
         [HttpGet]
@@ -19,7 +19,7 @@ namespace Locadora.Controllers
         {
             try
             {
-                var result = _pessoaService.GetAll().Select(x => (PessoaModel?)x);
+                var result = _telefoneService.GetAll().Select(x => (TelefoneModel?)x);
                 return Ok(result);
             }
             catch (InvalidOperationException)
@@ -38,7 +38,7 @@ namespace Locadora.Controllers
         {
             try
             {
-                PessoaModel? result = _pessoaService.GetById(id);
+                TelefoneModel? result = _telefoneService.GetById(id);
                 if (result is null)
                 {
                     return NotFound();
@@ -56,7 +56,7 @@ namespace Locadora.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostInsert([FromForm] InsertPessoaModel model)
+        public IActionResult PostInsert([FromForm] InsertTelefoneModel model)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Locadora.Controllers
                     return BadRequest(ModelState);
                 }
 
-                _pessoaService.Insert(model);
+                _telefoneService.Insert(model);
                 return Ok();
             }
             catch (InvalidOperationException)
@@ -79,7 +79,7 @@ namespace Locadora.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromForm] UpdatePessoaModel model)
+        public IActionResult Update([FromForm] UpdateTelefoneModel model)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace Locadora.Controllers
                     return BadRequest(ModelState);
                 }
 
-                _pessoaService.Update(model);
+                _telefoneService.Update(model);
                 return Ok();
             }
             catch (InvalidOperationException)
@@ -107,7 +107,7 @@ namespace Locadora.Controllers
         {
             try
             {
-                _pessoaService.Delete(id);
+                _telefoneService.Delete(id);
 
                 return Ok();
             }

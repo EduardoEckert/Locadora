@@ -1,4 +1,4 @@
-﻿using Domain.Dtos;
+﻿using Domain.Dtos.Pessoas;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
 using Domain.ServiceInterfaces;

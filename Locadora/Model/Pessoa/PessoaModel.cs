@@ -1,6 +1,6 @@
-﻿using Domain.Dtos;
+﻿using Domain.Dtos.Pessoas;
 
-namespace Locadora.Model
+namespace Locadora.Model.Pessoa
 {
     public class PessoaModel
     {

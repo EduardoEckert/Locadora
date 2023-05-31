@@ -1,10 +1,10 @@
 ﻿using Domain.Entities;
 
-namespace Domain.Dtos
+namespace Domain.Dtos.Pessoas
 {
     public class PessoaDto
     {
-        public int Id{ get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
 
