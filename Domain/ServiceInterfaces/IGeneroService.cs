@@ -1,5 +1,4 @@
-﻿using Domain.Dtos;
-using Domain.Dtos.Genero;
+﻿using Domain.Dtos.Generos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.ServiceInterfaces
 {
-    internal interface IGeneroService
+    public interface IGeneroService
     {
         IEnumerable<GeneroDto> GetAll();
         GeneroDto GetById(int id);

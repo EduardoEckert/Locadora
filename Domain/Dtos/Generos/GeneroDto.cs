@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Domain.Dtos
+namespace Domain.Dtos.Generos
 {
     public class GeneroDto
     {

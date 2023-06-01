@@ -1,12 +1,12 @@
-﻿using Domain.Dtos;
+﻿using Domain.Dtos.Generos;
 
-namespace Locadora.Model
+namespace Locadora.Model.Genero
 {
-    public class GeneroaModel
+    public class GeneroModel
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
-    
+
 
         public static implicit operator GeneroModel?(GeneroDto? dto)
         {
@@ -18,7 +18,7 @@ namespace Locadora.Model
             {
                 Id = dto.Id,
                 Descricao = dto.Descricao
-            
+
             };
         }
     }

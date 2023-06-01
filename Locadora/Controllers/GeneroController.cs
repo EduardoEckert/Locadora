@@ -1,5 +1,6 @@
 ﻿using Domain.ServiceInterfaces;
-using Locadora.Model;
+using Locadora.Model.Genero;
+using Locadora.Model.Generos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Locadora.Controllers

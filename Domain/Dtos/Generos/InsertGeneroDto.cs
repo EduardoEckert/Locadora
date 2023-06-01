@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Dtos.Genero
+namespace Domain.Dtos.Generos
 {
-    internal class InsertGeneroDto
+    public class InsertGeneroDto
     {
 
         public string Descricao { get; set; }

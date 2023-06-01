@@ -1,7 +1,8 @@
 ﻿using Domain.Dtos;
+using Domain.Dtos.Generos;
 using System.ComponentModel.DataAnnotations;
 
-namespace Locadora.Model
+namespace Locadora.Model.Generos
 {
     public class UpdateGeneroModel
     {
